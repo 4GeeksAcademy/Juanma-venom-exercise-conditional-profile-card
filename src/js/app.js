@@ -31,12 +31,33 @@ function render(variables = {}) {
   if (variables.includeCover == false) cover = "<div class='cover'></div>";
 
   // reset the website body with the new html output
-  document.querySelector("#widget_content").innerHTML = `<div class="widget">
-            ${cover}
-          <img src="${variables.avatarURL}" class="photo" />
-          <h1>${variables.name} ${variables.lastName}</h1>
-          <h2>Web Developer</h2>
-          <h3>Miami, USA</h3>
+  document.querySelector(
+    "#widget_content"
+  ).innerHTML = `<div class="widget">${cover}
+          <img src="${variables.avatarURL}" class="photo" />         
+          <h1>${
+            !variables.name || variables.name === "null"
+              ? "Your Name"
+              : variables.name
+          } ${
+    !variables.lastName || variables.lastName === "null"
+      ? "Your Lastname"
+      : variables.lastName
+  }</h1>
+          <h2${
+            !variables.role || variables.role === "null"
+              ? "Web Developer"
+              : variables.role
+          }</h2>
+          <h3>${
+            !variables.city || variables.city === "null"
+              ? "Miami"
+              : variables.city
+          }  ${
+    !variables.country || variables.country === "null"
+      ? "USA"
+      : variables.country
+  }</h3>
           <ul class="position-right">
             <li><a href="https://twitter.com/4geeksacademy"><i class="fab fa-twitter"></i></a></li>
             <li><a href="https://github.com/4geeksacademy"><i class="fab fa-github"></i></a></li>
